@@ -45,3 +45,36 @@ int main()
 	printf("Minimum coins required is %d\n" ,minCoins(coins, m, V));
 	return 0;
 }
+
+
+
+
+#include <stdio.h>
+
+void findMinCoins(int coins[], int n, int value)
+{
+    int count = 0;
+    for (int i = 0; i < n; i++)
+    {
+        while (value >= coins[i])
+        {
+            value -= coins[i];
+            count++;
+        }
+        if (value == 0)
+            break;
+    }
+    printf("Minimum number of coins required: %d", count);
+}
+
+int main()
+{
+    int coins[] = {1, 2, 5, 10, 20, 50, 100, 500, 1000};
+    int n = sizeof(coins) / sizeof(coins[0]);
+    int value;
+    printf("Enter the value for which you want to find the minimum number of coins: ");
+    scanf("%d", &value);
+    findMinCoins(coins, n, value);
+    return 0;
+}
+
